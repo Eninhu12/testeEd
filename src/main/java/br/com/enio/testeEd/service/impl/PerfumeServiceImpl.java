@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.enio.testeEd.domain.Perfume;
-import br.com.enio.testeEd.exeptions.PerfumeNaoExisteException;
+import br.com.enio.testeEd.exeptions.NaoExisteException;
 import br.com.enio.testeEd.model.PerfumeModel;
 import br.com.enio.testeEd.repository.PerfumeRepository;
 import br.com.enio.testeEd.service.PerfumeService;
+
 
 @Service
 public class PerfumeServiceImpl implements PerfumeService {
@@ -42,7 +43,7 @@ public class PerfumeServiceImpl implements PerfumeService {
 	@Override
 	public Perfume consultar(final Long id) {
 		return this.perfumeRepository.consultar(id)
-				.orElseThrow(() -> new PerfumeNaoExisteException(id));
+				.orElseThrow(() -> new NaoExisteException(id));
 	}
 
 }
